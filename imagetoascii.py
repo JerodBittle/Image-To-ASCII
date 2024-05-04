@@ -1,13 +1,18 @@
 import cv2
 
-image_file = r"C:\Users\TheBi\OneDrive\Desktop\main-qimg-6f49af888808d9f7203ae80b31d2a75e-lq.jpg"
+#Enter file path into the image_file raw string
+image_file = r""
+
+#Reads the file
 image_processd = cv2.imread(image_file)
 image_processdd = cv2.rotate(image_processd, cv2.ROTATE_90_COUNTERCLOCKWISE)
 image_process = cv2.resize(image_processdd, (500, 500))
 height, width, channel = image_process.shape
 
+#Opens new text file to store ASCII art
 f = open("ascii_file.txt", "w")
 
+#Loops through each pixel in the image and detects a brightness level for the pixels, depending on the brightness a different character is wrtten.
 for y in range(height):
     for x in range(width):
         r, g, b = image_process[x, y]
